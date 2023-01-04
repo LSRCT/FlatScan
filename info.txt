@@ -1,0 +1,27 @@
+Vision
+	Camer: Kinect v2
+	how to interface
+	- 1) https://github.com/Kinect/PyKinect2 
+		- is very old and not maintained, does not work with python > 3.7
+		- 2) updated forks exist, cant pip install that though... (https://github.com/SujithChristopher/PyKinect2)
+	- 3) https://github.com/nikwl/kinect-toolbox seems somewhat new, not popular
+	
+ --> Use fork option (2)
+
+SLAM
+https://silenceoverflow.github.io/Awesome-SLAM/#VISLAM
+- dense
+	https://github.com/gradslam/gradslam
+	https://github.com/tum-vision/dvo_slam
+- sparse
+	would rather not use sparse because of having to extract features
+ 	https://atsushisakai.github.io/PythonRobotics/
+	https://github.com/luigifreda/pyslam
+
+Registration
+- need to register the depth map to the color map
+- TUM Dataset does it with weird old software(https://vision.in.tum.de/data/datasets/rgbd-dataset/file_formats) 
+- Solutiont: use kinect onboard Registration
+
+# TODO
+ORBSLAM v3 https://arxiv.org/pdf/2007.11898.pdf
