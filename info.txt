@@ -25,3 +25,14 @@ Registration
 
 # TODO
 ORBSLAM v3 https://arxiv.org/pdf/2007.11898.pdf
+
+# ORBSLAM v2
+- modify config using kinect intrinsics
+	fx, fy, cx, cy, k1, k2, k3
+	(366.78289794921875, 366.78289794921875, 258.6048889160156, 203.27430725097656, 0.08835209161043167, -0.27074408531188965, 0.09791766107082367)
+- Usage:
+	/Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt Examples/RGB-D/TUM1.yaml ~/Desktop/slam_data/rgbd_dataset_freiburg1_desk ./Examples/RGB-D/associations/fr1_desk.txt 
+- After running, the trajectory is saved in CameraTrajectory.txt
+- Next register pointcloud to get 3D Map
+	python3 generate_registered_pointcloud.py --downsample 5 --nth 10 ~/Desktop/slam_data/ANe2/rgb.txt ~/Desktop/slam_data/ANe2/depth.txt ../../../CameraTrajectory.txt out.ply
+- visualize with freecad
