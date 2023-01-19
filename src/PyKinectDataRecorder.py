@@ -50,6 +50,7 @@ class VideoRecorderRuntime:
         self._surface_d = pygame.Surface((self.w_d, self.h_d), 0, 24)
         self.rgb_list = []
         self.depth_list = []
+        self.time_list = []
         self.setup_dir()
 
     def setup_dir(self):
@@ -64,24 +65,25 @@ class VideoRecorderRuntime:
             os.makedirs(self.dir_name_depth)
         self.frame_count = 0
 
-    def save_images(self, img_rgb, img_depth):
+    def save_images(self, img_rgb, img_depth, ts):
         """ Save color and depth images to the current directory. """
         self.frame_count += 1
         # plt.imsave(f"{self.dir_name_rgb}/{self.frame_count:05d}.png", img_rgb)
         img_rgb = Image.fromarray(img_rgb, 'RGB')
-        img_rgb.save(f"{self.dir_name_rgb}/{self.frame_count:05d}.png")
+        img_rgb.save(f"{self.dir_name_rgb}/{ts}.png")
         # save as 16 bit png
         # TUM dataset scales by 5 as well
         img_depth = Image.fromarray(img_depth * 5, 'I;16')
-        img_depth.save(f"{self.dir_name_depth}/{self.frame_count:05d}.png")
+        img_depth.save(f"{self.dir_name_depth}/{ts}.png")
     
     def add_images(self, img_rgb, img_depth):
         self.rgb_list.append(img_rgb)
         self.depth_list.append(img_depth)
+        self.time_list.append(time.time())
 
     def save_all_images(self):
         for i in range(len(self.rgb_list)):
-            self.save_images(self.rgb_list[i], self.depth_list[i])
+            self.save_images(self.rgb_list[i], self.depth_list[i], self.time_list[i])
         print("Saved all images")
 
     def draw_color_frame(self, frame, target_surface):
