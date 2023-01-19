@@ -1,3 +1,7 @@
 PyKinect2/
 Kinectdata/
 data/
+*.ply
+orbslam/trajectories
+orbslam/associations
+.vscode/
