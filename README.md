@@ -31,7 +31,7 @@ absolute scales are correct.
 
 manually measured ground truth:
 
-<img src="media/measure_gt.png" alt="drawing" width="600"/>
+<img src="media/measure_gt.PNG" alt="drawing" width="600"/>
 
 The measurements are reasonably close to the ground truth, showing differences up to 15 cm.
 The difference can be explained by two factors. Firstly, there is visibile noise in the generated map. Secondly, the ground truth was measured manually using a measuring stick, which also introduces measurement error.
